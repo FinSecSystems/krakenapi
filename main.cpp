@@ -13,13 +13,14 @@ int main()
    curl_global_init(CURL_GLOBAL_ALL);
 
    try {
-      KAPI kapi;
+      KAPI kapi();
       KAPI::Input in;
 
       // get recent trades 
       in.insert(make_pair("pair", "XXBTZEUR"));
-      cout << kapi.public_method("Trades", in) << endl;
-   }
+      //cout << kapi.public_method("Trades", in) << endl;
+      cout << kapi.private_method("Balance", in) << endl;
+  }
    catch(exception& e) {
       cerr << "Error: " << e.what() << endl;
    }

@@ -263,7 +263,9 @@ std::string KAPI::private_method(const std::string& method,
 
    // create a nonce and and postdata 
    std::string nonce = create_nonce();
+   std::cout << "NONCE: " << nonce << std::endl;
    std::string postdata = "nonce=" + nonce;
+   std::cout << "POSTDATA: " << postdata << std::endl;
 
    // if 'input' is not empty generate other postdata
    if (!input.empty())
@@ -274,7 +276,9 @@ std::string KAPI::private_method(const std::string& method,
    curl_slist* chunk = NULL;
 
    std::string key_header =  "API-Key: "  + key_;
+   std::cout << "API-Key: " << key_header << std::endl;
    std::string sign_header = "API-Sign: " + signature(path, nonce, postdata);
+   std::cout << "API-Sign: " << sign_header << std::endl;
 
    chunk = curl_slist_append(chunk, key_header.c_str());
    chunk = curl_slist_append(chunk, sign_header.c_str());
